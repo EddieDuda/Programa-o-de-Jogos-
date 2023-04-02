@@ -121,44 +121,7 @@ class Consultorio
     bool conveniadoPlanoSaude = (Console.ReadLine().ToLower() == "s");
 
     return new Paciente(nome, endereco, telefones, dataNascimento, dataPrimeiraConsulta, email, conveniadoPlanoSaude);
-
-
-    Paciente paciente1 = Paciente.NovoPaciente();
-    Consultorio consultorio1 = new Consultorio(
-    "Rua do Consultório 1, 123 - Iguatemi",
-    new List<string> { "Monday", "Friday" },
-    new Dictionary<DayOfWeek, List<TimeSpan>> {
-        { DayOfWeek.Monday, new List<TimeSpan> { new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0) } },
-        { DayOfWeek.Friday, new List<TimeSpan> { new TimeSpan(9, 0, 0), new TimeSpan(18, 0, 0) } }
     }
-    );
-    consultorio1.ImprimirFichaCompleta(paciente1);
-    paciente1.AgendarConsulta(consultorio1);
- 
-     Paciente paciente2 = Paciente.NovoPaciente();
-    Consultorio consultorio2 = new Consultorio(
-    "Rua do Consultório 2, 456 - Pituba",
-    new List<string> { "Tuesday", "Wednesday" },
-    new Dictionary<DayOfWeek, List<TimeSpan>> {
-        { DayOfWeek.Tuesday, new List<TimeSpan> { new TimeSpan(10, 0, 0), new TimeSpan(18, 0, 0) } },
-        { DayOfWeek.Wednesday, new List<TimeSpan> { new TimeSpan(10, 0, 0), new TimeSpan(18, 0, 0) } }
-    }
-    );
-    consultorio2.ImprimirFichaCompleta(paciente2);
-    paciente2.AgendarConsulta(consultorio2);
-    
-     Paciente paciente3 = Paciente.NovoPaciente();
-    Consultorio consultorio3 = new Consultorio(
-    "Rua do Consultório 3, 789 - Lauro de Freitas",
-    new List<string> { "Thursday" },
-    new Dictionary<DayOfWeek, List<TimeSpan>> {
-        { DayOfWeek.Thursday, new List<TimeSpan> { new TimeSpan(10, 0, 0), new TimeSpan(18, 0, 0) } }
-    }
-    );
-    consultorio3.ImprimirFichaCompleta(paciente3);
-    paciente3.AgendarConsulta(consultorio3);
-    }
-    
     public void AgendarConsulta(Consultorio consultorio)
     {
     // Verifica se o consultório atende no mesmo dia que a primeira consulta
