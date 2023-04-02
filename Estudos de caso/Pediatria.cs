@@ -202,7 +202,7 @@ public void ImprimirInformacoes()
 }
 }
 
-class MainClass
+class Pediatria
 {
 static void Main()
 {
