@@ -44,7 +44,7 @@ class Program
     {
         Jogo quina = new Jogo(new int[5], 1000000);
         Jogo megasena = new Jogo(new int[6], 5000000);
-        Jogo lotomania = new Jogo(new int[6], 100000);
+        Jogo lotomania = new Jogo(new int[7], 100000);
 
         Console.WriteLine("Digite os números escolhidos para o jogo de Quina (5 números):");
         quina.numerosEscolhidos = LerNumerosEscolhidos(5);
@@ -53,12 +53,12 @@ class Program
         megasena.numerosEscolhidos = LerNumerosEscolhidos(6);
 
         Console.WriteLine("Digite os números escolhidos para o jogo de Lotomania (6 números):");
-        lotomania.numerosEscolhidos = LerNumerosEscolhidos(6);
+        lotomania.numerosEscolhidos = LerNumerosEscolhidos(7);
 
-        quina.numerosSorteados = SortearNumeros(5);
-        megasena.numerosSorteados = SortearNumeros(6);
-        lotomania.numerosSorteados = SortearNumeros(6);
-
+        quina.numerosSorteados = SortearNumeros(5);    //Sabemso que Lotomania pode-se marcar 50 numeros,
+        megasena.numerosSorteados = SortearNumeros(6); //Contudo diminui para 7, com o objetivo de simplificar.
+        lotomania.numerosSorteados = SortearNumeros(7); 
+        
         Console.WriteLine("Resultado do jogo de Quina: " + string.Join(", ", quina.numerosSorteados));
         Console.WriteLine("Acertos no jogo de Quina: " + quina.NumerosAcertados());
         Console.WriteLine("Prêmio do jogo de Quina: " + quina.CalcularPremio(quina.NumerosAcertados()).ToString("C"));
@@ -90,11 +90,31 @@ static int[] SortearNumeros(int quantidadeNumeros)
     for (int i = 0; i < quantidadeNumeros; i++)
     {
         int numeroSorteado;
-        do
+        
+        if(quantidadeNumeros == 5 )
         {
-            numeroSorteado = random.Next(1, quantidadeNumeros + 1);
-        } while (Array.IndexOf(numerosSorteados, numeroSorteado) >= 0);
-        numerosSorteados[i] = numeroSorteado;
+            do
+            {
+                numeroSorteado = random.Next(1, 80);
+            } while (Array.IndexOf(numerosSorteados, numeroSorteado) >= 0);
+            numerosSorteados[i] = numeroSorteado;
+        }
+        else if(quantidadeNumeros == 6) 
+        {
+            do
+            {
+                numeroSorteado = random.Next(1, 60);
+            } while (Array.IndexOf(numerosSorteados, numeroSorteado) >= 0);
+            numerosSorteados[i] = numeroSorteado;
+        }
+        else if(quantidadeNumeros == 7)
+        {
+            do
+            {
+                numeroSorteado = random.Next(0, 99);
+            } while (Array.IndexOf(numerosSorteados, numeroSorteado) >= 0);
+            numerosSorteados[i] = numeroSorteado;
+        }
     }
     Array.Sort(numerosSorteados);
     return numerosSorteados;
