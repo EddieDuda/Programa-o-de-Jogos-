@@ -38,7 +38,7 @@ class Jogo
     }
 }
 
-class Program
+class Loteria
 {
     static void Main(string[] args)
     {
